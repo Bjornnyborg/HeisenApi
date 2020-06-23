@@ -3,6 +3,7 @@ require 'sinatra'
 require 'sinatra/cross_origin'
 require 'json'
 require 'mysql2'
+require 'yaml'
 
 
 class App < Sinatra::Base
@@ -15,9 +16,10 @@ class App < Sinatra::Base
     response.headers['Access-Control-Allow-Origin'] = '*'
   end
 
-  client = Mysql2::Client.new(:host => "localhost", :username => "root", :database => "heisenbase")
+  config = YAML::load_file("config/database.yml")["production"]
+  client = Mysql2::Client.new(:host => config['hostname'], :username => config['username'], :password => config['password'], :database => config['database'], :socket => config['socket'])
   client.query("CREATE TABLE IF NOT EXISTS \
-    highscores(Id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(25), time INT, level INT, createdDate datetime DEFAULT(CURTIME()))")
+    highscores(Id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(25), time INT, level INT, createdDate TIMESTAMP NOT NULL DEFAULT current_timestamp)")
 
   get '/highscore/:level' do
     scores = []
