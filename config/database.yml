@@ -8,11 +8,4 @@ development:
   pool: 5
   timeout: 5000
 production:
-  adapter: mysql
-  database: <%= ENV['DATABASE_NAME'] %>
-  hostname: <%= ENV['DATABASE_HOST'] %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /tmp/mysql.sock
-  pool: 5
-  timeout: 5000
+  url: <%= ENV['DATABASE_URL'] %>
