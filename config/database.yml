@@ -13,6 +13,5 @@ production:
   hostname: <%= ENV['DATABASE_HOST'] %>
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /tmp/mysqld.sock
   pool: 5
   timeout: 5000
