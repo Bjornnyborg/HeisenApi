@@ -1,7 +1,7 @@
 development:
   adapter: mysql
   database: heisenbase
-  hostname: localhost
+  host: localhost
   username: root
   password:
   socket: /tmp/mysql.sock
@@ -10,7 +10,7 @@ development:
 production:
   adapter: mysql
   database: <%= ENV['DATABASE_NAME'] %>
-  hostname: <%= ENV['DATABASE_HOSTNAME'] %>
+  host: <%= ENV['DATABASE_HOSTNAME'] %>
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/run/mysqld/mysqld.sock
