@@ -10,7 +10,7 @@ development:
 production:
   adapter: mysql
   database: <%= ENV['DATABASE_NAME'] %>
-  hostname: <%= ENV['DATABASE_HOST'] %>
+  hostname: <%= ENV['DATABASE_HOSTNAME'] %>
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/run/mysqld/mysqld.sock

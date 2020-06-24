@@ -22,7 +22,6 @@ class App < Sinatra::Base
   puts config['username']
   puts config['password']
   puts config['database']
-  puts config['socket']
 
   client = Mysql2::Client.new(:host => config['hostname'], :username => config['username'], :password => config['password'], :database => config['database'], :socket => config['socket'])
   client.query("CREATE TABLE IF NOT EXISTS \
