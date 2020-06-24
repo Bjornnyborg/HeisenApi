@@ -33,7 +33,7 @@ class App < Sinatra::Base
   get '/highscore/:level' do
     scores = []
 
-    client.query("SELECT id, name, time, level, createdDate FROM highscores WHERE level='#{params['level']}' ORDER BY time ASC;").each do |row|
+    client.query("SELECT id, name, time, level, createdDate FROM highscores WHERE level='#{params['level']}' ORDER BY time ASC LIMIT 10;").each do |row|
       scores.push(row)
     end
 
