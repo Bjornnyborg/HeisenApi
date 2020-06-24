@@ -18,6 +18,12 @@ class App < Sinatra::Base
 
   config = YAML.load(ERB.new(File.read(File.join("config","database.yml"))).result)["production"]
 
+  puts config['hostname']
+  puts config['username']
+  puts config['password']
+  puts config['database']
+  puts config['socket']
+
   client = Mysql2::Client.new(:host => config['hostname'], :username => config['username'], :password => config['password'], :database => config['database'], :socket => config['socket'])
   client.query("CREATE TABLE IF NOT EXISTS \
     highscores(Id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(25), time INT, level INT, createdDate TIMESTAMP NOT NULL DEFAULT current_timestamp)")
